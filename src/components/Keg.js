@@ -6,9 +6,7 @@ function Keg(props) {
     <React.Fragment>
       <div>
         <h2>{props.name}</h2>
-        <h3>{props.brand}</h3>
-        <p>{props.alcohol}</p>
-        {/* <p>{props.quantity}</p> */}
+        <p>{props.quantity}</p>
       </div>
     </React.Fragment>
   );
@@ -16,8 +14,7 @@ function Keg(props) {
 
 Keg.propTypes = {
   name: PropTypes.string.isRequired,
-  brand: PropTypes.string,
-  alcohol: PropTypes.string
+  quantity: PropTypes.number
 }
 
 export default Keg;
