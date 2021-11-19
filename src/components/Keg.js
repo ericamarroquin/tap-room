@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 function Keg(props) {
   return(
     <React.Fragment>
-      <div onClick={() => props.whenKegClicked(props.id)}>
+      <div onClick = {() => props.whenKegClicked(props.id)}>
         <h2>{props.name}</h2>
         <p>Remaining pints: {props.quantity}</p>
-        <hr />
       </div>
+      <button onClick = {() => props.whenPintSold(props.id)}>Sell Pint!</button>
+      <hr />
     </React.Fragment>
   );
 }
@@ -16,7 +17,9 @@ function Keg(props) {
 Keg.propTypes = {
   name: PropTypes.string.isRequired,
   quantity: PropTypes.number,
-  whenKegClicked: PropTypes.func
+  whenKegClicked: PropTypes.func,
+  id: PropTypes.string,
+  whenPintSold: PropTypes.func
 };
 
 export default Keg;
