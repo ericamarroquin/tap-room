@@ -4,20 +4,22 @@ import { v4 } from "uuid";
 
 function NewKegForm(props) {
 
-  function handleNewTicketFormSubmission(event) {
+  function handleNewKegFormSubmission(event) {
     event.preventDefault();
+    console.log(typeof event.target.alcohol.value);
     props.onNewKegCreation({name: event.target.name.value,
       brand: event.target.brand.value,
       price: event.target.price.value,
-      alcContent: event.target.alcContent,
+      alcohol: event.target.alcohol.value,
       quantity: 124,
-      id: v4()});
+      id: v4()
+    });
   }
 
 
   return(
     <React.Fragment>
-      <form onSubmit={handleNewTicketFormSubmission}>
+      <form onSubmit={handleNewKegFormSubmission}>
         <input 
           type='text'
           name='name' 
@@ -32,7 +34,7 @@ function NewKegForm(props) {
           placeholder='Keg Price' />
         <input 
           type='text'
-          name='alcContent'
+          name='alcohol'
           placeholder='Alcohol Content' />
         <button type='submit'>Submit new keg</button>
       </form>
