@@ -2,6 +2,18 @@ import React from "react";
 import KegList from "./KegList";
 import NewKegForm from "./NewKegForm";
 import KegDetail from "./KegDetail";
+import { v4 } from "uuid";
+
+const seededKegList = [
+  {
+    name: "Flower Power",
+    brand: "Ithaca Beer Co.",
+    price: "$325",
+    alcohol: "",
+    quantity: 124,
+    id: v4()
+  }
+]
 
 class KegControl extends React.Component {
 
@@ -13,6 +25,7 @@ class KegControl extends React.Component {
       selectedKeg: null
     };
   };
+
 
   handleClick = () => {
     if (this.state.selectedKeg !== null) {
@@ -39,9 +52,9 @@ class KegControl extends React.Component {
   }
 
   handleSellingSelectedPint = (id) => {
-    const selectedSoldPint = this.state.mainKegList.filter(keg => keg.id === id)[0];
-    selectedSoldPint.quantity = selectedSoldPint.quantity - 1;
-    console.log(selectedSoldPint.quantity);
+    let selectedSoldPint = this.state.mainKegList.filter(keg => keg.id === id)[0];
+    selectedSoldPint = selectedSoldPint.quantity--;
+    this.setState({selectedSoldPint: selectedSoldPint});
   }
 
   render() {
