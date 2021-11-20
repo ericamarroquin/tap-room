@@ -9,11 +9,11 @@ const seededKegList = [
     name: "Flower Power",
     brand: "Ithaca Beer Co.",
     price: "$325",
-    alcohol: "",
-    quantity: 124,
+    alcohol: "8.0 ABV",
+    quantity: 2,
     id: v4()
   }
-]
+];
 
 class KegControl extends React.Component {
 
@@ -21,7 +21,7 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainKegList: [],
+      mainKegList: seededKegList,
       selectedKeg: null
     };
   };
@@ -53,8 +53,10 @@ class KegControl extends React.Component {
 
   handleSellingSelectedPint = (id) => {
     let selectedSoldPint = this.state.mainKegList.filter(keg => keg.id === id)[0];
-    selectedSoldPint = selectedSoldPint.quantity--;
-    this.setState({selectedSoldPint: selectedSoldPint});
+    if (selectedSoldPint.quantity > 0) {
+      selectedSoldPint = selectedSoldPint.quantity--;
+      this.setState({selectedSoldPint: selectedSoldPint});
+    }
   }
 
   render() {

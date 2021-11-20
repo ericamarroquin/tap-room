@@ -8,7 +8,7 @@ function Keg(props) {
         <h2>{props.name}</h2>
         {props.quantity <=0 ? <p>Keg is sold out! Sad face.</p> : <p>Remaining pints: {props.quantity}</p>}
       </div>
-      <button onClick = {() => props.whenPintSold(props.id)}>Sell Pint!</button>
+      {props.quantity <=0 ? null : <button onClick = {() => props.whenPintSold(props.id)}>Sell Pint!</button>}
       <hr />
     </React.Fragment>
   );
